@@ -64,6 +64,44 @@ class linkedList:
             priorND.next = currentND.next
             self.count-=1
 
+    def prePend(self, value, nodeVal): #prepends the node containing nodeVal in its payload with a node containing value
+        #assumes no user error, assumes nodeVal is the same variable type
+        parentNode = self.head
+        currentNode = self.head
+        if self.head.payload == nodeVal:
+            NewNode = node(value)
+            NewNode.next = self.head
+            self.head = NewNode
+            return
+        while currentNode.payload != nodeVal:
+            parentNode = currentNode
+            currentNode = currentNode.next
+        NewNode = node(value)
+        NewNode.next = currentNode
+        parentNode.next = NewNode
+        return
+
+    def postPend(self, value, nodeVal): #finds node with value nodeVal, and appends it as next on the list
+        currentNode = self.head
+        while currentNode.payload != nodeVal:
+            currentNode = currentNode.next
+        newNode = node(value)
+        newNode.next = currentNode.next
+        currentNode.next = newNode
+        return
+
+    def removeVal(self, nodeVal): #finds node with value nodeVal, and deletes it wihtout breaking the link to the rest of the nodes
+        parentNode = self.head
+        currentNode = self.head
+        while currentNode.payload != nodeVal:
+            parentNode = currentNode
+            currentNode = currentNode.next
+        parentNode.next = currentNode.next
+        return
+
+        
+
+
         
 
 
