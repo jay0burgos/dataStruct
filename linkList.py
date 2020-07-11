@@ -98,6 +98,25 @@ class linkedList:
             currentNode = currentNode.next
         parentNode.next = currentNode.next
         return
+    
+    def minToFront(self): #tracks four nodes, a current node and its parent 
+        minNode = self.head #and the current minNode and its parent containing the node being compared to
+        minNodeParent = None
+
+        currentNode = minNode.next
+        currentNodeParent = minNode
+        while currentNode.next != None:
+            if minNode.payload > currentNode.payload:
+                minNode = currentNode
+                minNodeParent = currentNodeParent
+            currentNodeParent = currentNode
+            currentNode = currentNode.next
+        currentNodeParent.next = currentNode.next
+        currentNode.next = self.head
+        self.head = currentNode
+        return
+
+                
 
         
 
