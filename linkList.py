@@ -26,14 +26,20 @@ class linkedList:
             self.end.next = current
             self.end = current
             self.count +=1
-    def search(self, value, currentNode, index = 1):
-        #recursive search method, work in progess
+
+    def search(self, value, currentNode, parentNode, index = 1):
+        #recursive search method, when node with matching value is found, its returned along with its node, parent and index
         if currentNode == None:
             return None
         elif currentNode.payload == value:
-            return currentNode
+            results = {
+                "node": currentNode,
+                "parent": parentNode,
+                "index": index
+            }
+            return results
         else:
-            self.search(value, currentNode.next, index + 1)
+            self.search(value, currentNode.next, currentNode, index + 1)
     
     def getIndex(self, index): #returns the node by its 'index', will eventually turn it into a recursive function
         currentNode = self.head
@@ -115,6 +121,17 @@ class linkedList:
         currentNode.next = self.head
         self.head = currentNode
         return
+
+    def findDup(self): #finds and deletes duplicated, using a currentNode which is used to push along a linear comperison 
+        currentNode = self.head
+        while currentNode != None:
+            duplicate = self.search(currentNode.payload, currentNode.next, currentNode) #uses a built in search that returns a dictionay
+            if duplicate != None: #if a duplicate is found, duplicate will not be null
+                self.removeIndex(duplicate["index"]) #uses the removeIndex function
+            else: #duplicate is null, no value was found, goes to next Node
+                currentNode.next 
+
+
 
                 
 
