@@ -10,7 +10,7 @@ import { HeroesComponent } from './heroes/heroes.component';
     AppComponent,
     HeroesComponent
   ],
-  imports: [
+  imports: [ // imported file and instances
     BrowserModule,
     AppRoutingModule,
     FormsModule

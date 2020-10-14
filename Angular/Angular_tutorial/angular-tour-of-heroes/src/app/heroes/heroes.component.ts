@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Hero } from '../hero';
-import { Villian} from '../villian'
+import { Villian } from '../villian'
+import {HEROES} from '../mock-heroes'
+
 
 @Component({
   selector: 'app-heroes',
@@ -13,9 +15,17 @@ export class HeroesComponent implements OnInit {
     id: 1,
     name: 'Windstorm'
   }
-  villan: Villian = {
+  villan: Villian = { //creates an object that uses the villan interface
     id:1,
-    name: 'Wrecker'
+    name: 'Wrecker',
+    sayIntro: ()=>{return "You will never stop me"}
+  }
+  heroes = HEROES; //component property
+
+  selectedHero: Hero;
+
+  onSelect(hero: Hero): void {
+    this.selectedHero = hero;
   }
 
   constructor() { }

@@ -1,9 +1,23 @@
-<h2>{{hero.name}} Details</h2>
-<div><span>id: </span> {{hero.id}} </div>
-<div><span>name: </span> {{hero.name | uppercase}} </div>
-                                <!-- ^ pipe -->
-<div>
-    <label>Name:
-        <input [(ngModel)] = "hero.name" placeholder="name"/>
-    </label>
+<h2>My heroes</h2>
+<ul class="heroes">
+    <!-- *ngFor is Angular's repeater directive, repeats host element/ -->
+    <li *ngFor="let hero of heroes" (click)="onSelect(hero)"[class.selected] = "hero === selectedHero"> <!-- Click event binding(check out more about)-->
+<!-- I ^ host element       ^ holds list of heroes -->
+        
+        
+        <span class="badge">{{hero.id}}</span> {{hero.name}}
+    </li>
+</ul>
+
+<div *ngIf="selectedHero">
+    <h2>{{selectedHero.name | uppercase}} Details</h2>
+    <div><span>id: </span> {{selectedHero.id}} </div>
+    <div><span>name: </span> {{selectedHero.name | uppercase}} </div>
+                                    <!-- ^ pipe -->
+    <div>
+        <label>Name:
+            <input [(ngModel)] = "selectedHero.name" placeholder="name"/>
+        </label>
+    </div>
+
 </div>

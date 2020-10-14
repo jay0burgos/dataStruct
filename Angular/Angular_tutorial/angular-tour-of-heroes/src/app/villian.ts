@@ -1,6 +1,5 @@
-import { Interface } from "readline";
-
-export interface villian{
+export interface Villian{
     id: number;
     name: string;
+    sayIntro: ()=>string
 }
